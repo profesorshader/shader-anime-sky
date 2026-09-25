@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://by477opdfarje"]
+
+[ext_resource type="Shader" uid="uid://btbhjwl8rpb1t" path="res://shaders/placeholders/grid.gdshader" id="1_tdk5q"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_tdk5q")
+shader_parameter/gridSize = 1.0
+shader_parameter/colorA = Color(0, 0, 0, 1)
+shader_parameter/colorB = Color(1, 1, 1, 1)

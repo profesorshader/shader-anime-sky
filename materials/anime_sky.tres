@@ -1,0 +1,61 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://n6eh5asedudp"]
+
+[ext_resource type="Shader" uid="uid://bhqqjfnduyu8s" path="res://shaders/sky/anime_sky.gdshader" id="1_hb1lc"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3jl3p"]
+noise_type = 4
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hb1lc"]
+width = 2048
+height = 1024
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_3jl3p")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hb1lc"]
+noise_type = 4
+seed = 83
+frequency = 0.005
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_07402"]
+width = 1024
+height = 1024
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_hb1lc")
+seamless = true
+
+[resource]
+shader = ExtResource("1_hb1lc")
+shader_parameter/back_color_top = Color(0.12, 0.4, 0.66, 1)
+shader_parameter/back_color_bottom = Color(0.34, 0.75, 0.92, 1)
+shader_parameter/sun_size = 0.001
+shader_parameter/sun_softness = 0.1
+shader_parameter/sun_glow_size = 0.2
+shader_parameter/sun_color = Color(1, 1, 1, 1)
+shader_parameter/sun_glow_color = Color(1, 1, 1, 0.15)
+shader_parameter/hor_height_min = 0.05
+shader_parameter/hor_height_max = 0.2
+shader_parameter/hor_color_mix = Color(1, 1, 1, 0.125)
+shader_parameter/hor_color_add = Color(1, 1, 1, 0.125)
+shader_parameter/cloud_hor_tex = SubResource("NoiseTexture2D_hb1lc")
+shader_parameter/cloud_hor_start = 0.25
+shader_parameter/cloud_hor_end = 0.5
+shader_parameter/cloud_hor_scale = Vector2(1, 2)
+shader_parameter/cloud_top_tex = SubResource("NoiseTexture2D_07402")
+shader_parameter/cloud_top_start = 0.6
+shader_parameter/cloud_top_end = 0.7
+shader_parameter/cloud_top_scale = 0.5
+shader_parameter/clouds_power = 3.0
+shader_parameter/cloud_transtion_start = 0.8
+shader_parameter/cloud_transtion_end = 0.9
+shader_parameter/cloud_color_bright = Color(1, 1, 1, 1)
+shader_parameter/cloud_color_dark = Color(0.8, 0.9, 1, 1)
+shader_parameter/cloud_color_edges_mix = Color(1, 1, 1, 1)
+shader_parameter/cloud_color_edges_add = Color(1, 1, 1, 1)
+shader_parameter/cloud_edges = 0.9
+shader_parameter/hor_speed = 0.1
+shader_parameter/hor_layer0_speed_mult = 0.05
+shader_parameter/hor_layer1_speed_mult = 0.1
+shader_parameter/top_speed = 0.1

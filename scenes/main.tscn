@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dtwpvo28nvfhx"]
+
+[ext_resource type="PackedScene" uid="uid://cs653bfl3ppxw" path="res://scenes/sub/player.tscn" id="1_o5qli"]
+[ext_resource type="Material" uid="uid://by477opdfarje" path="res://materials/grid_black_and_white.tres" id="2_0wfyh"]
+[ext_resource type="Material" uid="uid://n6eh5asedudp" path="res://materials/anime_sky.tres" id="3_jyhfs"]
+[ext_resource type="Material" uid="uid://sd3gjyd0tdjo" path="res://materials/forest.tres" id="3_sugp2"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0wfyh"]
+size = Vector2(10, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o5qli"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="Sky" id="Sky_drsdo"]
+sky_material = ExtResource("3_jyhfs")
+
+[sub_resource type="Environment" id="Environment_6taee"]
+background_mode = 2
+sky = SubResource("Sky_drsdo")
+
+[sub_resource type="QuadMesh" id="QuadMesh_jg8ra"]
+size = Vector2(3.2, 1.8)
+
+[node name="Main" type="Node3D" unique_id=1659312484]
+
+[node name="Player" parent="." unique_id=1332900970 instance=ExtResource("1_o5qli")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2016768341]
+material_override = ExtResource("2_0wfyh")
+mesh = SubResource("PlaneMesh_0wfyh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=1583260157]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=45436674]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_o5qli")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=638937064]
+transform = Transform3D(0.74193144, 0.09254337, 0.66405827, -0.032651532, -0.9842664, 0.17364818, 0.6696802, -0.1505176, -0.7272365, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1192649498]
+environment = SubResource("Environment_6taee")
+
+[node name="ForestBackground" type="MeshInstance3D" parent="." unique_id=1880194787]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, -1.5)
+visible = false
+material_override = ExtResource("3_sugp2")
+mesh = SubResource("QuadMesh_jg8ra")
